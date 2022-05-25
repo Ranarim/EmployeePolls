@@ -1,12 +1,14 @@
 import {connect} from "react-redux";
 import { handleAnswerQuestion } from "../actions/questions";
 import { formatQuestion } from "../utils/helpers";
-
+import { useLocation } from 'react-router-dom'
 
 
 const ViewQuestions = (props) => {
 
-   console.log(props)
+    const location = useLocation()
+    const { id } = location.state
+    console.log(id)
 
     if (!props.question) {
         return (
@@ -65,8 +67,3 @@ const mapStateToProps = ({authedUser,users,questions},props) => {
 export default connect(mapStateToProps)(ViewQuestions)
 
 
-/** TODO
- * Creating the Style for this component
- * Implementing the Router System and passing the id from the Question Component
- * Making ure the 
- */
