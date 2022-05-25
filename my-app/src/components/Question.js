@@ -9,7 +9,7 @@ const Question = (props) => {
     var link = `/questions/${props.id}`
     
     return (
-    <Link to={link} className={styles.question_card}> 
+    <Link to={link} state={{ id: props.id }} className={styles.question_card}> 
         <h4>{props.question.name}</h4> 
         <p>{"Date: "+date.getDate()+
           "/"+(date.getMonth()+1)+
@@ -18,7 +18,6 @@ const Question = (props) => {
           ":"+date.getMinutes()+
           ":"+date.getSeconds()}</p>
     </Link>
-
 )
 }
 
