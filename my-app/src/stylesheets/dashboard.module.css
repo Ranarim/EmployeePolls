@@ -1,0 +1,6 @@
+.questions_list {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    list-style-type: none;
+}

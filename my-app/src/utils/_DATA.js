@@ -16,7 +16,7 @@ let users = {
     id: 'tylermcginnis',
     password:'abc321',
     name: 'Tyler McGinnis',
-    avatarURL: null,
+    avatarURL: "/Users/johannesmaier/Desktop/Code/Masterschool Projects/EmployeePolls/my-app/src/utils/logo.jpeg",
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',

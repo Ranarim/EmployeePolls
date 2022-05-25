@@ -1,0 +1,11 @@
+.question_card {
+    display: flex;
+    flex-direction: column;
+    height: 15vh;
+    width: 10vw;
+    background-color: rgb(164, 112, 213);
+    margin: 0 1em 0em 1em;
+    text-align: center;
+    justify-content: center;
+}
+
