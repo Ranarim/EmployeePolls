@@ -18,11 +18,8 @@ const Dashboard = (props) => {
     );
   };
 
-const mapStateToProps = ({questions,authedUser,users},props) => {
-  
-  const { id } = props.match.params;
-
-  
+const mapStateToProps = ({questions,authedUser}) => {
+    
   return ({
             // What is the peace of state in the store, this component cares about?
             // What will show up as a property on this container?
@@ -32,10 +29,9 @@ const mapStateToProps = ({questions,authedUser,users},props) => {
             questionIds: Object.keys(questions).sort((a,b) => 
             questions[b].timestamp - questions[a].timestamp
             ),
-            authedUser,
-            users,
-            id
+            authedUser
     })
-}
+  }
+
 
 export default connect(mapStateToProps)(Dashboard)

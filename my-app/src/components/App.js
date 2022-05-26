@@ -9,6 +9,8 @@ import Login from "./Login"
 import Leaderboard from "./Leaderboard";
 import styles from '../stylesheets/app.module.css'
 import ViewQuestion from "./ViewQuestion";
+import { LoadingBar } from "react-redux-loading-bar";
+
 
 
 
@@ -18,20 +20,20 @@ const App = (props) => {
   },)
 
   return (
-    props.loading === true ? 
-    (<Login/>) : 
-   ( <Fragment>
+    <Fragment>
+      <LoadingBar/> 
+      {props.loggedIn === false ? (<Login/>) : (
      <div className={styles.box_form}>
       <NavBar/>  
       <Routes>
-        <Route path="/" exact element={<Dashboard match={{ params: { id: "8xf0y6ziyjabvozdd253nd" } }}/>}/>
+        <Route path="/" exact element={<Dashboard/>}/>
         <Route path="/leaderboard" exact element={<Leaderboard/>}/>
         <Route path="/new" element={<CreateQuestion/>}/>
         <Route path="/questions/:id" element={<ViewQuestion/>}/>
       </Routes>
       </div>
+      )}
     </Fragment>
-    )
   )
 }
 
@@ -40,7 +42,7 @@ const mapStateToProps = ({authedUser}) => {
     {
        // What is the peace of state in the store, this component cares about? --> authed user
       // What will show up as a property on this container? --> id of authed user
-      loading: authedUser === null
+      loggedIn: authedUser !== null ? true : false,
     }
   )
 }

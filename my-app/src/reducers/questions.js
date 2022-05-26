@@ -1,40 +1,55 @@
-import { RECEIVE_QUESTIONS, ANSWER_QUESTION } from "../actions/questions";
+import { RECEIVE_QUESTIONS, ANSWER_QUESTION, ADD_QUESTION } from "../actions/questions";
+
+const optionFunc = (prevState = {},action) => {
+    switch(action.type) {
+        case ANSWER_QUESTION: 
+
+        const { votes } = prevState;
+
+        return {
+            ...prevState,
+                votes: votes.concat([action.authedUser]), 
+        }
+
+        default: 
+        return prevState;
+    }
+}
+
+ const questionFunc = (prevState = {},action) => {
+    switch(action.type) {
+        case ANSWER_QUESTION: 
+        return {
+            ...prevState,
+                [action.answer]: optionFunc(prevState[action.answer],action)
+        }
+        default: 
+        return prevState;
+    }
+}
 
 
-export default function questions (state={}, action){
+export default function questions (prevState={}, action){
     switch(action.type) {
         case RECEIVE_QUESTIONS: 
         return {
-            ...state,
+            ...prevState,
             ...action.questions,
         }
         case ANSWER_QUESTION: 
         return {
+        ...prevState,
+            [action.id]: questionFunc(prevState[action.id],action)
 
-            /*What I want to do: 
-            If the user votes for A, push his ID in the state[action.id].optionA.votes Array,
-            if the user votes for , push his ID in the state[action.id].optionB.votes Array
-            */
-
-            ...state,
-            [action.id]: {
-                ...state[action.id],
-                answers: action.hasAnswered === true ?  
-                (
-                    action.voteForA ? state[action.id].optionOne.votes.filter(
-                (userId) => userId !== action.authedUser) : 
-                state[action.id].optionTwo.votes.filter( (userId) => userId !== action.authedUser)
-                ) : (
-                    action.voteForA ? state[action.id].optionOne.votes.concat([action.authedUser]) : 
-                    state[action.id].optionTwo.votes.concat([action.authedUser])
-                )
-
-            }
+        }
+           case ADD_QUESTION:
+           return {
+                ...prevState,
+                [action.question.id]: action.question,
            }
            default: 
-           return state;
+           return prevState;
         }
-     
     }
 
 

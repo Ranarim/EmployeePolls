@@ -1,31 +1,29 @@
 import {connect} from "react-redux";
 import { handleAnswerQuestion } from "../actions/questions";
-import { formatQuestion } from "../utils/helpers";
 import { useLocation } from 'react-router-dom'
-
+ 
 
 const ViewQuestions = (props) => {
 
-    const location = useLocation()
-    const { id } = location.state
-    console.log(id)
-
-    if (!props.question) {
+    let location = useLocation();
+    let data = location.state;
+    
+    if (!data.question) {
         return (
             <p>This question doesnt exist.</p>
         )
     }
+  /*   {authedUser, id, answer} */
 
-    const handlAnswerPoll = (boolean) => {
-        boolean.preventDefault();
+    const handlAnswerPoll = (e) => {
+        e.preventDefault();
 
-        const {dispatch,question,authedUser} = props;
+        const {dispatch,authedUser} = props;
 
         dispatch(handleAnswerQuestion({
-            id: question.id,
             authedUser,
-            hasAnswered: question.hasAnswered,
-            voteForA: boolean === true ? true : false,
+            id: data.question.id,
+            answer: e.target.value,
         }))
     }
     
@@ -51,15 +49,10 @@ const ViewQuestions = (props) => {
     )
 }
 
-const mapStateToProps = ({authedUser,users,questions},props) => {
-    const question = questions[props.id];
+const mapStateToProps = ({authedUser}) => {
     return (
         {
-            authedUser,
-            question: question ?
-            formatQuestion(question,users[question.author]) : null, 
-            // What is the peace of state in the store, this component cares about? --> tweets
-            // What will show up as a property on this container
+            authedUser
         }
     )
 }

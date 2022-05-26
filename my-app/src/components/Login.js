@@ -1,10 +1,33 @@
 import {connect} from "react-redux";
 import styles from '../stylesheets/login.module.css'
+import { handleLogin } from "../actions/shared";
+import { useState } from "react";
 
 
 
 const Login = (props) => {
-    return (
+
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+
+	function performValidation() {
+		return username.length > 0 && password.length > 0;
+		}
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		const {users} = props;
+		if( users.hasOwnProperty(username) && users[username].password === password ) {
+			handleLogin(users[username].id)
+			console.log(props.authedUser)
+		} else {
+			console.log("NOP")
+		}
+	}
+
+
+	
+	return (
         <div className={styles.box_form}>
 	<div className={styles.left}>
 		<div className={styles.overlay}>
@@ -18,14 +41,21 @@ const Login = (props) => {
 		<p>Don't have an account? Creat Your Account it takes less than a minute.</p>
 		<div className={styles.inputs}>
 			<form action="">
-			<input type="text" placeholder="user name"></input>
+			<input type="text"
+				value={username}
+				onChange={e => 
+				setUsername(e.target.value)}></input>
 			<br></br>
-			<input type="password" placeholder="password"></input>
+			<input type="password"
+				value={password}
+				onChange={e => setPassword(e.target.value)}
+			>
+			</input>
 			</form>
 			
 		</div>	
 			<br></br>
-			<button>Login</button>
+			<button onClick={handleSubmit} disabled={!performValidation()} type="submit">Login</button>
 	</div>
 	
 </div>
@@ -33,10 +63,10 @@ const Login = (props) => {
   };
 
   //
-  const mapStateToProps = ({users}) =>{
+  const mapStateToProps = ({users,authedUser}) =>{
       return ({
-		// What is the peace of state in the store, this component cares about?
-      	// What will show up as a property on this container?
+		users,
+		authedUser
       })
   }
 

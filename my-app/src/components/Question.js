@@ -1,15 +1,18 @@
 import {connect} from "react-redux"
 import { formatQuestion } from "../utils/helpers"
-import styles from "../stylesheets/question.module.css"
-import { Link } from "react-router-dom"
+/* import styles from "../stylesheets/question.module.css"
+ */import { Link } from "react-router-dom"
 
 const Question = (props) => {
     var timestamp = props.question.timestamp
     var date = new Date(timestamp); 
     var link = `/questions/${props.id}`
-    
+    const stateData = {
+        id: props.id,
+        question: props.question,
+    }
     return (
-    <Link to={link} state={{ id: props.id }} className={styles.question_card}> 
+   <Link to={link} state={stateData}>
         <h4>{props.question.name}</h4> 
         <p>{"Date: "+date.getDate()+
           "/"+(date.getMonth()+1)+

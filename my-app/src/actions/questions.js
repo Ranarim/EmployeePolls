@@ -1,27 +1,42 @@
 import { saveQuestionAnswer } from "../utils/api";
 import { saveQuestion } from "../utils/api";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
+import {addUsersQuestion} from "./users"
 
 export const ADD_QUESTION = "ADD_QUESTION";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION"
 
- function addQuestion (question) {
-    return {
-        type: ADD_QUESTION,
-        question
+
+export function handleAnswerQuestion ({authedUser, id, answer}) {
+    return (dispatch) => {
+        dispatch(showLoading());
+
+        return saveQuestionAnswer({
+            id,
+            authedUser,
+            answer,
+        })
+        .then(() => {
+            dispatch(answerQuestion({ authedUser, id, answer }));
+          })
+          .then(() => dispatch(hideLoading()));
     }
 }
 
-export default function handleAddQuestion(optionOne, optionTwo) {
-    return (dispatch,getState) => {
-        const {authedUser} = getState();
-        return saveQuestion({
-            optionOne,
-            optionTwo,
-            author: authedUser
-        })
-        .then((question) => dispatch(addQuestion(question)))
-    }
+export default function handleAddQuestion(question) {
+   return (dispatch) => {
+       dispatch(showLoading)
+   
+
+   return saveQuestion(question)
+   .then((data) => {
+        dispatch(addQuestion(data));
+        dispatch(addUsersQuestion(data));
+   })
+   .then(() => dispatch(hideLoading()))
+   .catch(err => console.log(err,": HandleAddQuestion Action Creator failed"))
+}
 }
 
 export function receiveQuestions(questions) {
@@ -33,24 +48,18 @@ export function receiveQuestions(questions) {
     )
 }
 
-function answerQuestion ({id,authedUser,hasAnswered, voteForA}) {
+function answerQuestion ({id,authedUser,answer}) {
     return ({
         type: ANSWER_QUESTION,
         id,
         authedUser,
-        hasAnswered,
-        voteForA,
+        answer,
     })
 }
 
-export function handleAnswerQuestion (info) {
-    return (dispatch) => {
-        dispatch(answerQuestion(info))
-
-        return saveQuestionAnswer.catch((err) => { 
-            console.warn("Error in handling answering a question: ", err);
-            dispatch(answerQuestion(info))
-            alert("There was an error in the handling of answering the question")
-        })
+function addQuestion (question) {
+    return {
+        type: ADD_QUESTION,
+        question
     }
 }

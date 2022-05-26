@@ -1,19 +1,36 @@
 import { getInitialData } from "../utils/api";
 import { receiveQuestions } from "./questions";
 import { receiveUsers } from "./users";
-import { setAuthedUser } from "./authedUser";
+import { setAuthedUser,logOutUser } from "./authedUser";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-const AUTHED_USER = "tylermcginnis"
+export const handleLogin = (authedUserId) => {
+  return (dispatch) => {
+    dispatch(setAuthedUser(authedUserId))
+  }
+}
 
-export function handleInitialData() {
+export const handleLogout = (authedUser) => {
+  return (dispatch) => {
+    dispatch(logOutUser(authedUser))
+  }
+}
+
+export const handleInitialData = () => {
     return (dispatch) => {
+      dispatch(showLoading());
       return getInitialData().then(({ users, questions }) => {
         dispatch(receiveUsers(users));
         dispatch(receiveQuestions(questions));
-        dispatch(setAuthedUser(AUTHED_USER));
+        dispatch(hideLoading());
       });
     };
   }
+
+
+
+
+
 
 
 
