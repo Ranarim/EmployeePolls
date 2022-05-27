@@ -14,7 +14,7 @@ const Login = (props) => {
 		return username.length > 0 && password.length > 0;
 		}
 
-	function handleSubmit(event) {
+/* 	function handleSubmit(event) {
 		event.preventDefault();
 		const {users} = props;
 		if( users.hasOwnProperty(username) && users[username].password === password ) {
@@ -23,7 +23,7 @@ const Login = (props) => {
 		} else {
 			console.log("NOP")
 		}
-	}
+	} */
 
 
 	
@@ -55,7 +55,7 @@ const Login = (props) => {
 			
 		</div>	
 			<br></br>
-			<button onClick={handleSubmit} disabled={!performValidation()} type="submit">Login</button>
+			<button onClick={() => handleLogin(username) } disabled={!performValidation()} type="submit">Login</button>
 	</div>
 	
 </div>
