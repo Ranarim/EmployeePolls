@@ -4,6 +4,7 @@ import { receiveUsers } from "./users";
 import { setAuthedUser,logOutUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
+
 export const handleLogin = (authedUserId) => {
   return (dispatch) => {
     dispatch(setAuthedUser(authedUserId))
@@ -11,6 +12,7 @@ export const handleLogin = (authedUserId) => {
 }
 
 export const handleLogout = (authedUser) => {
+  console.log(authedUser)
   return (dispatch) => {
     dispatch(logOutUser(authedUser))
   }

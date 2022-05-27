@@ -6,8 +6,6 @@ import {handleLogout} from "../actions/shared"
 const NavBar = (props) => {
 /*     const avatarURL = props.users[props.authedUser].avatarURL
  */
-console.log(props)
-
     return (
         <ul className={styles.navbar}>
         <li><Link to="/">Home</Link></li>

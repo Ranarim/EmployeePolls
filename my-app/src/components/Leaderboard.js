@@ -1,19 +1,50 @@
 import {connect} from "react-redux";
+import styles from "../stylesheets/navbar.module.css";
 
 
 const Leaderboard = (props) => {
-    return (
-        <div>
+const {users} = props;
+const objToArr = Object.keys(users)
 
-        </div>
+const usersArr = []
+objToArr.map((user) =>
+    usersArr.push(users[user])
+)
+
+usersArr.map((user,index) => 
+    user.numAnswerQuestions = Object.keys(usersArr[index].answers).length + user.questions.length
+)
+
+usersArr.sort(function(a, b) {
+    return parseFloat(b.numAnswerQuestions) - parseFloat(a.numAnswerQuestions);
+}); 
+
+return (
+        <div className={styles.leaderboard}>
+        <table>
+          <tr>
+            <th>Users</th>
+            <th>Answered</th>
+            <th>Created</th>
+          </tr>
+          {usersArr.map((user) => {
+            return (
+              <tbody key={user.id}>
+                <td>{user.name}</td>
+                <td>{Object.keys(user.answers).length}</td>
+                <td>{user.questions.length}</td>
+              </tbody>
+            )
+          })}
+        </table>
+      </div>
     )
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = ({users}) => {
     return (
         {
-        // What is the peace of state in the store, this component cares about?
-        // What will show up as a property on this container?
+            users
         }
     )
 }

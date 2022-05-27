@@ -1,32 +1,24 @@
 import {connect} from "react-redux";
 import styles from '../stylesheets/login.module.css'
 import { handleLogin } from "../actions/shared";
-import { useState } from "react";
 
 
 
 const Login = (props) => {
 
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+	const { users, } = props;
 
-	function performValidation() {
-		return username.length > 0 && password.length > 0;
-		}
+	const objToArr = Object.keys(users)
 
-/* 	function handleSubmit(event) {
-		event.preventDefault();
-		const {users} = props;
-		if( users.hasOwnProperty(username) && users[username].password === password ) {
-			handleLogin(users[username].id)
-			console.log(props.authedUser)
-		} else {
-			console.log("NOP")
-		}
-	} */
+	const usersArr = []
+		objToArr.map((user) =>
+    	usersArr.push(users[user])
+	)
+  
+	const login = (e) => {
+	  props.dispatch(handleLogin(e.target.value));
+	};
 
-
-	
 	return (
         <div className={styles.box_form}>
 	<div className={styles.left}>
@@ -40,22 +32,17 @@ const Login = (props) => {
 		<h5>Login</h5>
 		<p>Don't have an account? Creat Your Account it takes less than a minute.</p>
 		<div className={styles.inputs}>
-			<form action="">
-			<input type="text"
-				value={username}
-				onChange={e => 
-				setUsername(e.target.value)}></input>
-			<br></br>
-			<input type="password"
-				value={password}
-				onChange={e => setPassword(e.target.value)}
-			>
-			</input>
-			</form>
-			
+		<select
+          onChange={(e) => login(e)}
+        >
+          <option>choose your username</option>
+          {usersArr.map((user) => (
+            <option key={user.id} value={user.id}>
+              {user.name}
+            </option>
+          ))}
+        </select>
 		</div>	
-			<br></br>
-			<button onClick={() => handleLogin(username) } disabled={!performValidation()} type="submit">Login</button>
 	</div>
 	
 </div>
@@ -63,11 +50,10 @@ const Login = (props) => {
   };
 
   //
-  const mapStateToProps = ({users,authedUser}) =>{
+  const mapStateToProps = ({users}) =>{
       return ({
-		users,
-		authedUser
-      })
+		users      
+	})
   }
 
   export default connect(mapStateToProps)(Login)
