@@ -10,9 +10,10 @@ const Question = (props) => {
     const stateData = {
         id: props.id,
         question: props.question,
-    }
+    } 
+
     return (
-   <Link to={link} state={stateData}>
+   <Link to={link} state={{from: stateData}}>
         <h4>{props.question.name}</h4> 
         <p>{"Date: "+date.getDate()+
           "/"+(date.getMonth()+1)+
