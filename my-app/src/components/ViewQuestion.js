@@ -1,6 +1,8 @@
 import {connect} from "react-redux";
-import { handleAnswerQuestion } from "../actions/questions";
 import { useLocation } from 'react-router-dom'
+import { addUsersAnswer } from "../actions/users";
+import {handleAnswerQuestion} from "../actions/questions";
+
  
 
 const ViewQuestions = (props) => {
@@ -8,9 +10,7 @@ const ViewQuestions = (props) => {
     const location = useLocation()
     const { from } = location.state
 
-    const { users, authedUser } = props;
-    const { id,question } = from;
-    const {firstChoice,secondChoice,timestamp,name } = question
+    const {firstChoice,secondChoice,name } = from.question
   
     if (!from.question) {
         return (
@@ -18,16 +18,23 @@ const ViewQuestions = (props) => {
         )
     }
 
-    const handlAnswerPoll = (e) => {
+    const handleAnswerPoll = (e,) => {
+        console.log(e.target.value, props.authedUser, from.question.id)
 
-        const {dispatch,authedUser} = props;
+        const {dispatch} = props;
 
-        dispatch(handleAnswerQuestion({
-            authedUser,
-            id: from.question.id,
+        dispatch(addUsersAnswer({
+            authedUser: props.authedUser,
+            qid: from.question.id,
             answer: e.target.value,
         }))
-        console.log(e)
+
+        dispatch(handleAnswerQuestion({
+            authedUser: props.authedUser,
+            qid: from.question.id,
+            answer: e.target.value,
+        }))
+
     }
     
     return (
@@ -35,17 +42,20 @@ const ViewQuestions = (props) => {
             <div>
                 <h2>Poll by {name}</h2>
                 <img src="" alt="" />
-                <h2>Would you rather?</h2>
+                <h2>Would you rather</h2>
             </div>
-            <div onChange={handlAnswerPoll}>
-                <div className="poll-color-light padding">
-                <input type="radio" name="options" value="optionOne" />
-                <span>{firstChoice.text}</span>
-            </div>{" "}
-            <div className="poll-color-light padding">
-              <input type="radio" name="options" value="optionTwo" />
-              <span>{secondChoice.text}</span>
+            <div
+            onChange={handleAnswerPoll}
+          >
+            <div>
+              <input type="radio" value="optionOne" />
+              {firstChoice.text}
+              <h4>or</h4>
             </div>
+            <div>
+              <input type="radio" value="optionTwo" />
+              {secondChoice.text}
+            </div><h4>?</h4>
           </div>
         </div>
     )

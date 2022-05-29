@@ -39,7 +39,7 @@ export default function questions (prevState={}, action){
         case ANSWER_QUESTION: 
         return {
         ...prevState,
-            [action.id]: questionFunc(prevState[action.id],action)
+            [action.qid]: questionFunc(prevState[action.qid],action)
 
         }
            case ADD_QUESTION:

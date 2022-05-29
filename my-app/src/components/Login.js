@@ -6,6 +6,7 @@ import { handleLogin } from "../actions/shared";
 
 const Login = (props) => {
 
+	
 	const { users, } = props;
 
 	const objToArr = Object.keys(users)
@@ -17,6 +18,7 @@ const Login = (props) => {
   
 	const login = (e) => {
 	  props.dispatch(handleLogin(e.target.value));
+
 	};
 
 	return (

@@ -20,11 +20,11 @@ export function addUsersQuestion(question) {
     )
 }
 
-export function addUsersAnswer({answer,authedUser,questionId}){
+export function addUsersAnswer({answer,qid,authedUser}){
     return ({
         type: ADD_USERS_ANSWER,
         answer,
         authedUser,
-        questionId,
+        qid,
     })
 }

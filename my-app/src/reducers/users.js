@@ -38,22 +38,24 @@ const questionFunc = (prevState = {},action) => {
 
 export default function users (prevState={}, action){
     switch(action.type) {
+
         case RECEIVE_USERS: 
         return {
             ...prevState,
             ...action.users,
         }
         case ADD_USERS_QUESTION: 
-            const {authedUser} = action;
+        console.log(action);
             return {
                 ...prevState,
-                [authedUser]: questionFunc(prevState[authedUser],action)
+                [action.authedUser]: questionFunc(prevState[action.authedUser],action)
         }
         case ADD_USERS_ANSWER: 
-            
+        console.log(action.authedUser);
+
             return {
                 ...prevState,
-                [authedUser]:answerFunc(prevState[authedUser],action)
+                [action.authedUser]:answerFunc(prevState[action.authedUser],action)
             }
 
         default: 

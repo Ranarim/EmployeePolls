@@ -17,7 +17,7 @@ import { LoadingBar } from "react-redux-loading-bar";
 const App = (props) => {
   useEffect(()=>{
   props.dispatch(handleInitialData())
-  },)
+  },[props.loggedIn])
 
   return (
     <Fragment>

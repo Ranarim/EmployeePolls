@@ -1,5 +1,5 @@
-import { saveQuestionAnswer } from "../utils/api";
-import { saveQuestion } from "../utils/api";
+import { _saveQuestionAnswer } from "../utils/_DATA";
+import { _saveQuestion } from "../utils/_DATA";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import {addUsersQuestion} from "./users"
 
@@ -8,28 +8,30 @@ export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION"
 
 
-export function handleAnswerQuestion ({authedUser, id, answer}) {
+export function handleAnswerQuestion ({authedUser, qid, answer}) {
+    console.log(authedUser,qid,answer)
+    
     return (dispatch) => {
         dispatch(showLoading());
 
-        return saveQuestionAnswer({
-            id,
+        return _saveQuestionAnswer({
+            qid,
             authedUser,
             answer,
         })
         .then(() => {
-            dispatch(answerQuestion({ authedUser, id, answer }));
+            dispatch(answerQuestion({ authedUser, qid, answer }));
           })
           .then(() => dispatch(hideLoading()));
     }
 }
 
-export default function handleAddQuestion(question) {
+export function handleAddQuestion(question) {
    return (dispatch) => {
        dispatch(showLoading)
    
 
-   return saveQuestion(question)
+   return _saveQuestion(question)
    .then((data) => {
         dispatch(addQuestion(data));
         dispatch(addUsersQuestion(data));
@@ -48,10 +50,10 @@ export function receiveQuestions(questions) {
     )
 }
 
-function answerQuestion ({id,authedUser,answer}) {
+function answerQuestion ({qid,authedUser,answer}) {
     return ({
         type: ANSWER_QUESTION,
-        id,
+        qid,
         authedUser,
         answer,
     })

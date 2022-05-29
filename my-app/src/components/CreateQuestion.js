@@ -1,49 +1,50 @@
-import {useState} from "react"
 import { connect } from "react-redux";
-import  handleAddQuestion from "../actions/questions";
+import {handleAddQuestion} from "../actions/questions"
+import {useState} from "react"
 
-const CreateQuestion = ({dispatch,id}) => {
-    const [optionA, setOptionA] = useState("")
-    const [optionB, setOptionB] = useState("")
 
-    const handleChangeA = (e) => {
-        e.preventDefault();
-        let text = e.target.value;
-        setOptionA(text);
+const CreateQuestion = (props) => {
+    const [optionA, setOptionA] = useState("");
+    const [optionB, setOptionB] = useState("");
+
+
+    const handleCreatePoll = () => {
+
+        console.log(optionA,optionB)
+        const {dispatch} = props;
+
+        dispatch(handleAddQuestion({
+            optionOneText: optionA,
+            optionTwoText:  optionB,
+            author: props.authedUser
+        }))
     }
 
-    const handleChangeB = (e) => {
-        e.preventDefault();
-        let text = e.target.value;
-        setOptionB(text);
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        dispatch(handleAddQuestion(optionA,optionB))
-
-        setOptionA("");
-        setOptionB("");
-    }
 
     return (
         <div>
         <h2>Would you rather</h2>
         <p>Create your Own Poll</p>
-        <form onSubmit={handleSubmit}>
+        <form>
             <p>First Option</p>
-			<input type="OptionOne" placeholder="First Option" value={optionA} onChange={handleChangeA}></input>
+			<input type="OptionOne" placeholder="First Option" onChange={(e) => setOptionA(e.target.value)}></input>
 			<br></br>
             <p>Second Option</p>
-			<input type="OptionTwo" placeholder="Second Option" value={optionB} onChange={handleChangeB}></input>
+			<input type="OptionTwo" placeholder="Second Option" onChange={(e) => setOptionB(e.target.value)} ></input>
 			</form>
             <br />
-            <button>Login</button>
+            <button onClick={handleCreatePoll}>Login</button>
         </div>
     )
 }
 
-export default connect()(CreateQuestion)
+const mapStateToProps = ({authedUser,users, questions}) => {
+    return ({
+        authedUser,
+        users,
+        questions,
+    })
+}
+export default connect(mapStateToProps)(CreateQuestion)
 
 
