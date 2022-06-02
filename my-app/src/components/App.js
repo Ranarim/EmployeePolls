@@ -7,7 +7,7 @@ import Login from "./Login"
  import CreateQuestion from "./CreateQuestion"
  import NavBar from "./NavBar";
 import Leaderboard from "./Leaderboard";
-import styles from '../stylesheets/app.module.css'
+import styles from '../stylesheets/app.module.css';
 import ViewQuestion from "./ViewQuestion";
 import { LoadingBar } from "react-redux-loading-bar";
 
@@ -17,7 +17,7 @@ import { LoadingBar } from "react-redux-loading-bar";
 const App = (props) => {
   useEffect(()=>{
   props.dispatch(handleInitialData())
-  },[props.loggedIn])
+  },)
 
   return (
     <Fragment>

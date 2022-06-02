@@ -12,6 +12,7 @@ export function receiveUsers(users) {
 }
 
 export function addUsersQuestion(question) {
+    //CHECK - is working
     return ({
         type: ADD_USERS_QUESTION,
         authedUser: question.author,

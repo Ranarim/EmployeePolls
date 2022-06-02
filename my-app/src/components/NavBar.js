@@ -21,7 +21,7 @@ const NavBar = (props) => {
         <li className={styles.navbar_left}>{props.authedUser}</li>
         <li><img href={avatarURL} alt=""/></li>
         <li onClick={logout}><Link to="/login">Logout</Link></li>
-      </ul>
+        </ul>
     )
 }
 

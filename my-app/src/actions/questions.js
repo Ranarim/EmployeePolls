@@ -9,7 +9,6 @@ export const ANSWER_QUESTION = "ANSWER_QUESTION"
 
 
 export function handleAnswerQuestion ({authedUser, qid, answer}) {
-    console.log(authedUser,qid,answer)
     
     return (dispatch) => {
         dispatch(showLoading());

@@ -1,6 +1,27 @@
 .questions_list {
     display: flex;
     position: relative;
-    flex-direction: row;
+    flex-direction: column;
     list-style-type: none;
+    flex-wrap: none;
+}
+
+.answered_questions {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.title {
+    margin: auto;
+}
+
+.unanswered_questions {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

@@ -1,16 +1,20 @@
 import { connect } from "react-redux";
 import {handleAddQuestion} from "../actions/questions"
 import {useState} from "react"
+import { useNavigate } from "react-router-dom";
 
 
 const CreateQuestion = (props) => {
+    
+    const navigate = useNavigate();
+
     const [optionA, setOptionA] = useState("");
     const [optionB, setOptionB] = useState("");
 
 
+
     const handleCreatePoll = () => {
 
-        console.log(optionA,optionB)
         const {dispatch} = props;
 
         dispatch(handleAddQuestion({
@@ -18,6 +22,8 @@ const CreateQuestion = (props) => {
             optionTwoText:  optionB,
             author: props.authedUser
         }))
+        navigate("/");
+
     }
 
 

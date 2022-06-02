@@ -1,12 +1,13 @@
 import {connect} from "react-redux";
-import styles from '../stylesheets/login.module.css'
+import styles from '../stylesheets/login.module.css';
 import { handleLogin } from "../actions/shared";
-
+/* import { useNavigate } from "react-router-dom";
+ */
 
 
 const Login = (props) => {
 
-	
+
 	const { users, } = props;
 
 	const objToArr = Object.keys(users)
@@ -18,8 +19,11 @@ const Login = (props) => {
   
 	const login = (e) => {
 	  props.dispatch(handleLogin(e.target.value));
-
 	};
+	
+/* 	const loginWithoutAcc = () => {
+		props.dispatch(handleLogin("guestUser"));
+	} */
 
 	return (
         <div className={styles.box_form}>
@@ -44,6 +48,7 @@ const Login = (props) => {
             </option>
           ))}
         </select>
+		<button>Login without Account</button>
 		</div>	
 	</div>
 	
@@ -60,4 +65,5 @@ const Login = (props) => {
 
   export default connect(mapStateToProps)(Login)
 
+  
 

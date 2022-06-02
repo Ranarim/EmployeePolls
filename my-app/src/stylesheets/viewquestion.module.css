@@ -1,0 +1,9 @@
+.yes {
+    border-color: green;
+    background-color: green;
+}
+
+.no {
+    border-color: red;
+    background-color: red;
+}
