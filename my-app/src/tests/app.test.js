@@ -1,20 +1,19 @@
-import App from '../components/App';
-import React from 'react';
-import { render,screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../index.js';
+import React from "react";
 import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import App from "../components/App";
+import store from "../store";
 
-describe("Testing the app component", () => {
-    it("checking if login page shows up", () => {
-        render (
+describe("App", () => {
+  test("should render the loginform onload", () => {
+    render(
         <Provider store={store}>
           <App />
         </Provider>
-        )
-        const loginText = screen.getByText(/login/i)
-        expect(loginText).toBeInTheDocument();
-    })
+    );
+    const loginText = screen.getByText(/employee polls/i)
+    expect(loginText).toBeInTheDocument();
 })
-
+})
 

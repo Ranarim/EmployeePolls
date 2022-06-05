@@ -14,13 +14,11 @@ const Question = (props) => {
 
     return (
    <Link to={link} state={{from: stateData}}>
-        <h4>{props.question.name}</h4> 
-        <p>{"Date: "+date.getDate()+
+        <h4 data-testid="header-element">{props.question.name}</h4> 
+        <p data-testid="date-element">{"Date: "+date.getDate()+
           "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()+
-          " "+date.getHours()+
-          ":"+date.getMinutes()+
-          ":"+date.getSeconds()}</p>
+          "/"+date.getFullYear()
+          }</p>
     </Link>
 )
 }

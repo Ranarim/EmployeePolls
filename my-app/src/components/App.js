@@ -3,16 +3,13 @@ import {connect} from "react-redux";
 import {Routes, Route} from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
  import Dashboard from "./Dashboard";
-import Login from "./Login"
+import Login from "./Login";
  import CreateQuestion from "./CreateQuestion"
  import NavBar from "./NavBar";
 import Leaderboard from "./Leaderboard";
 import styles from '../stylesheets/app.module.css';
 import ViewQuestion from "./ViewQuestion";
 import { LoadingBar } from "react-redux-loading-bar";
-
-
-
 
 const App = (props) => {
   useEffect(()=>{

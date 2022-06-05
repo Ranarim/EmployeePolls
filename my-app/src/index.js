@@ -9,9 +9,10 @@ import applyMiddleware from "./middleware/index";
 import { BrowserRouter as Router } from "react-router-dom";
 
 
-
-const store = createStore(combineReducers,applyMiddleware)
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const store = createStore(combineReducers, applyMiddleware);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") || document.createElement("div") // <---- LOOK HERE
+);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
