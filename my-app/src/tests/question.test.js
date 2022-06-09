@@ -1,20 +1,22 @@
-import React from 'react';
+/* import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import Question from "../components/Question";
-import {screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 
 
 const mockStore = configureStore([]);
 
-describe('My Connected React-Redux Component', () => {
+describe('My Connected Question Component', () => {
   let store;
   let component;
 
   beforeEach(() => {
     store = mockStore({
-      myState: 'sample text',
+      question: {
+        timestamp: new Date()
+      },
     });
   });
 
@@ -28,10 +30,10 @@ describe('My Connected React-Redux Component', () => {
     expect(component.toJSON()).toMatchSnapshot();
 
     const answered = screen.getByText(/answered polls/i);
-       const unanswered = screen.getByText(/unanswered polls/i);
-        expect(answered).toBeInTheDocument();
-        expect(unanswered).toBeInTheDocument();
+    const unanswered = screen.getByText(/unanswered polls/i);
+    expect(answered).toBeInTheDocument();
+    expect(unanswered).toBeInTheDocument();
   });
 });
 
- 
+ */
