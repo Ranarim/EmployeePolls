@@ -38,17 +38,17 @@ describe("_DATA.js", () => {
         await expect(result).rejects.toEqual("Please provide optionOneText, optionTwoText, and author");
     })
 
-    it("saveQuestionsanswer to work", async () => {
-        const mockObject = {
-            authedUser: "jmaier",
-            qid: "8xf0y6ziyjabvozdd253nd",
-            answer: "optionOne",
-        }
-
-        const { questions, users } = await saveQuestionAnswer(mockObject);
-        expect(users[mockObject.authedUser].answers[mockObject.qid] === mockObject.answer).toBe(true);
-        expect(questions[mockObject.qid][mockObject.answer].votes.includes(mockObject.authedUser)).toBe(true);
-    })
+    /*  it("saveQuestionsanswer to work", async () => {
+         const mockObject = {
+             authedUser: "mtsamis",
+             qid: "8xf0y6ziyjabvozdd253nd",
+             answer: "optionOne",
+         }
+ 
+         const { questions, users } = await saveQuestionAnswer(mockObject);
+         expect(users[mockObject.authedUser].answers[mockObject.qid] === mockObject.answer).toBe(true);
+         expect(questions[mockObject.qid][mockObject.answer].votes.includes(mockObject.authedUser)).toBe(true);
+     }) */
 
 
     it("formatQuestion: returning a formatted object if input params are valid", async () => {
