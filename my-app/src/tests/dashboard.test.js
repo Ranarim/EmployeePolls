@@ -47,6 +47,11 @@ describe('My Connected Question Component', () => {
         });
     });
 
+
+    /*
+     * David, the error is occuring here
+     * The exact error is: "TypeError: Cannot read properties of undefined (reading 'getState')
+     */
     const component = render(
         <Provider store={mockedStore}>
             <Dashboard />
