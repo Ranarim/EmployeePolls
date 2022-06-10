@@ -1,6 +1,6 @@
 import {
-    _saveQuestion as saveQuestion,
-    _saveQuestionAnswer as saveQuestionAnswer,
+    _saveQuestion,
+    _saveQuestionAnswer,
     formatQuestion,
     generateUID,
 } from "../utils/_DATA";
@@ -9,7 +9,6 @@ import {
 
 describe("_DATA.js", () => {
 
-
     it("saveQuestion: to work if valid params are passed", async () => {
         const mockObject = {
             optionOneText: "Apfel",
@@ -17,7 +16,7 @@ describe("_DATA.js", () => {
             author: "Johannes Maier",
         }
 
-        const mockData = await saveQuestion(mockObject);
+        const mockData = await _saveQuestion(mockObject);
         const { author, optionOne, optionTwo } = mockData;
         const optionOneText = optionOne.text;
         const optionTwoText = optionTwo.text;
@@ -34,21 +33,21 @@ describe("_DATA.js", () => {
             author: null,
         }
 
-        const result = saveQuestion(mockObject);
+        const result = _saveQuestion(mockObject);
         await expect(result).rejects.toEqual("Please provide optionOneText, optionTwoText, and author");
     })
+    test("returns the saved answer with all expected fields populated when correctly formatted data is passed to the function", async () => {
+        const mockObject = {
+            authedUser: "sarahedo",
+            qid: "am8ehyc8byjqgar0jgpub9",
+            answer: "optionOne",
+        }
+        const { authedUser, qid, answer } = mockObject;
 
-    /*  it("saveQuestionsanswer to work", async () => {
-         const mockObject = {
-             authedUser: "mtsamis",
-             qid: "8xf0y6ziyjabvozdd253nd",
-             answer: "optionOne",
-         }
- 
-         const { questions, users } = await saveQuestionAnswer(mockObject);
-         expect(users[mockObject.authedUser].answers[mockObject.qid] === mockObject.answer).toBe(true);
-         expect(questions[mockObject.qid][mockObject.answer].votes.includes(mockObject.authedUser)).toBe(true);
-     }) */
+        const { users, questions } = await _saveQuestionAnswer(mockObject);
+        expect(users[authedUser].answers[qid] === answer).toBe(true);
+        expect(questions[qid][answer].votes.includes(authedUser)).toBe(true);
+    });
 
 
     it("formatQuestion: returning a formatted object if input params are valid", async () => {
