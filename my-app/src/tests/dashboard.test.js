@@ -47,21 +47,16 @@ describe('My Connected Question Component', () => {
         });
     });
 
-
-    /*
-     * David, the error is occuring here
-     * The exact error is: "TypeError: Cannot read properties of undefined (reading 'getState')
-     */
-    const component = render(
-        <Provider store={mockedStore}>
+    test("should render with given state from Redux store", () => {
+        render(
+          <Provider store={mockedStore}>
             <Dashboard />
-        </Provider>
-    );
-
-    it('should render with given state from Redux store', () => {
-        const answered = screen.getByText(/answered polls/i);
-        const unanswered = screen.getByText(/unanswered polls/i);
-        expect(answered).toBeInTheDocument();
-        expect(unanswered).toBeInTheDocument();
-    });
+          </Provider>
+        );
+        
+        const answered = screen.getAllByText(/answered polls/i);
+        const unanswered = screen.getAllByText(/unanswered polls/i);
+        expect(answered[0]).toBeInTheDocument();
+        expect(unanswered[0]).toBeInTheDocument();
+  });
 });

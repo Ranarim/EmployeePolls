@@ -37,8 +37,6 @@ const App = (props) => {
 const mapStateToProps = ({authedUser}) => {
   return (
     {
-       // What is the peace of state in the store, this component cares about? --> authed user
-      // What will show up as a property on this container? --> id of authed user
       loggedIn: authedUser !== null ? true : false,
     }
   )

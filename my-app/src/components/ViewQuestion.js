@@ -9,9 +9,7 @@ const ViewQuestions = (props) => {
 
     const location = useLocation()
     const navigate = useNavigate()
-
     const { from } = location.state
-
     const {firstChoice,secondChoice,name } = from.question
   
     if (!from.question) {
@@ -23,7 +21,6 @@ const ViewQuestions = (props) => {
     
 
     const handleAnswerPoll = (e,) => {
-
         const {dispatch} = props;
 
         dispatch(addUsersAnswer({
@@ -44,13 +41,10 @@ const ViewQuestions = (props) => {
 
     const checkIfAnswered = () => 
     props.users[props.authedUser].answers.hasOwnProperty(from.question.id);
-    
-
     const getVotesPercentage = (num) => {
         const rawNum = (num/(firstChoice.votes.length + secondChoice.votes.length))*100;
         return `${rawNum.toFixed(2)} percent votes for this option`
     }
-
     const voteForOption = (option) => props.users[props.authedUser].answers[from.question.id] === option;
     
     return (
@@ -85,7 +79,6 @@ const ViewQuestions = (props) => {
             </div><h4>?</h4>
           </div>
             ) }
-            
         </div>
     )
 }

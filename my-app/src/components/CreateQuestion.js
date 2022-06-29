@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const CreateQuestion = (props) => {
     
     const navigate = useNavigate();
-
     const [optionA, setOptionA] = useState("");
     const [optionB, setOptionB] = useState("");
     const [disabled,setDisabled] = useState(true)
@@ -17,9 +16,7 @@ const CreateQuestion = (props) => {
     },[optionA,optionB])
 
     const handleCreatePoll = () => {
-
         const {dispatch} = props;
-
         dispatch(handleAddQuestion({
             optionOneText: optionA,
             optionTwoText:  optionB,

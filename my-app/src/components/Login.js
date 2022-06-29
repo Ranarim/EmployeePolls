@@ -4,22 +4,16 @@ import { handleLogin } from "../actions/shared";
 
 
 const Login = (props) => {
-
-
 	const { users, } = props;
-
 	const objToArr = Object.keys(users)
-
 	const usersArr = []
 		objToArr.map((user) =>
     	usersArr.push(users[user])
 	)
-  
 	const login = (e) => {
 	  props.dispatch(handleLogin(e.target.value));
 	};
 	
-
 	return (
         <div className={styles.box_form}>
 	<div className={styles.left}>

@@ -54,10 +54,7 @@ const Dashboard = (props) => {
               </li>
             )))
           ) : null}
-
         </div>
-
-
       </div>
     </div>
   );
