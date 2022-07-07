@@ -24,6 +24,7 @@ const Dashboard = (props) => {
     activeUnAnswered ? setActiveUnAnswered(false) : setActiveUnAnswered(true)
   }
 
+
   return (
     <div>
       <div className={styles.questions_list}>
@@ -46,7 +47,7 @@ const Dashboard = (props) => {
         <div className={styles.unanswered_questions}>
 
           {activeUnAnswered ? (
-            answeredQuestions.length === 0 ? (
+            unAnsweredQuestions.length === 0 ? (
               <h3 className={styles.no_polls}>No polls available.</h3>
             ) : (unAnsweredQuestions.map(question => (
               <li key={question} className={styles.question_listitems}>

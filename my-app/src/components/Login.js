@@ -25,7 +25,7 @@ const Login = (props) => {
 	</div>
 		<div className={styles.right}>
 		<h5>Login</h5>
-		<p>Don't have an account? Creat Your Account it takes less than a minute.</p>
+		<p>Don't have an account but want to try it out? Then log in as a guest user.</p>
 		<div className={styles.inputs}>
 		<select
           onChange={(e) => login(e)}

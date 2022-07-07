@@ -25,7 +25,7 @@ const App = (props) => {
       <Routes>
         <Route path="/" exact element={<Dashboard/>}/>
         <Route path="/leaderboard" exact element={<Leaderboard/>}/>
-        <Route path="/new" element={<CreateQuestion/>}/>
+        <Route path="/add" element={<CreateQuestion/>}/>
         <Route path="/questions/:id" element={<ViewQuestion/>}/>
       </Routes>
       </div>
@@ -43,4 +43,5 @@ const mapStateToProps = ({authedUser}) => {
 }
 
 export default connect(mapStateToProps)(App)
+
 

@@ -7,11 +7,11 @@ const Question = (props) => {
     const timestamp = props.question.timestamp
     const date = new Date(timestamp);
     const link = `/questions/${props.id}`
-    const stateData = {
+    const stateData =  {
         id: props.id,
         question: props.question,
     }
-
+    
     return (
         <Link to={link} state={{ from: stateData }}>
             <h4 data-testid="header-element">{props.question.name}</h4>

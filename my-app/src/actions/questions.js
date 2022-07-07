@@ -28,7 +28,6 @@ export function handleAnswerQuestion ({authedUser, qid, answer}) {
 export function handleAddQuestion(question) {
    return (dispatch) => {
        dispatch(showLoading)
-   
 
    return _saveQuestion(question)
    .then((data) => {

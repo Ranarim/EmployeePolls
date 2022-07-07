@@ -44,6 +44,15 @@ let users = {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
     questions: [],
+  },
+  Guest: {
+    id: 'Guest',
+    password: 'nopasswordneeded',
+    name: 'Guest User',
+    avatarURL: "https://cdn.onlinewebfonts.com/svg/img_451170.png",
+    answers: {
+    },
+    questions: [],
   }
 }
 

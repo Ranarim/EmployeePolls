@@ -7,3 +7,13 @@
     border-color: red;
     background-color: red;
 }
+
+.notFound {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sorry {
+    margin: 5em 2em 0 -3em;
+}

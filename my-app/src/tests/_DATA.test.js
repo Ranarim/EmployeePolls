@@ -68,6 +68,5 @@ describe("_DATA.js", () => {
         const result = generateUID();
         expect(result.length).toBeGreaterThan(15);
     })
-
 })
 
