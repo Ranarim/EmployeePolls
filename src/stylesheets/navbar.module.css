@@ -56,3 +56,7 @@
 .navbar_avatar:hover {
     color: none;
 }
+
+a {
+    color: white;
+}

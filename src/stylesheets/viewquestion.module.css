@@ -1,3 +1,9 @@
+.box {
+    text-align: center;
+    justify-content: center;
+    margin: 0px 0 0 0;
+}
+
 .yes {
     border-color: green;
     background-color: green;

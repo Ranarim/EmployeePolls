@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import { formatQuestion } from "../utils/helpers"
-/* import styles from "../stylesheets/question.module.css"
- */import { Link } from "react-router-dom"
+import styles from "../stylesheets/question.module.css"
+ import { Link } from "react-router-dom"
 
 const Question = (props) => {
     const timestamp = props.question.timestamp
@@ -14,11 +14,13 @@ const Question = (props) => {
     
     return (
         <Link to={link} state={{ from: stateData }}>
-            <h4 data-testid="header-element">{props.question.name}</h4>
-            <p data-testid="date-element">{"Date: " + date.getDate() +
+            <div className={styles.questionBox}>
+                <h4 data-testid="header-element" className={styles.header}>{props.question.name}</h4>
+                <p data-testid="date-element" className={styles.header}>{"Date: " + date.getDate() +
                 "/" + (date.getMonth() + 1) +
                 "/" + date.getFullYear()
-            }</p>
+                }</p>
+            </div>
         </Link>
     )
 }

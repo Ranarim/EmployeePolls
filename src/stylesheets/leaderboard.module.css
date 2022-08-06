@@ -1,0 +1,34 @@
+.leaderboard {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 800px;
+    height: 200px;
+}
+
+table,
+th,
+td {
+    border: 0.5px solid;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 20px;
+}
+
+.userPic {
+    display: flex;
+    flex-direction: row;
+    border: 0.5px solid;
+}
+
+.userPic img {
+    width: 40px;
+    height: 40px;
+}

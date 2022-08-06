@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {handleAddQuestion} from "../actions/questions"
 import {useEffect, useState} from "react"
 import { useNavigate } from "react-router-dom";
-
+import styles from '../stylesheets/createquestion.module.css';
 
 const CreateQuestion = (props) => {
     
@@ -27,15 +27,15 @@ const CreateQuestion = (props) => {
     }
 
     return (
-        <div>
+        <div className={styles.createQuestion}>
         <h2>Would you rather</h2>
         <p>Create your Own Poll</p>
         <form>
             <p>First Option</p>
-			<input data-testid="input-field-one" type="OptionOne" placeholder="First Option" onChange={(e) => setOptionA(e.target.value)}></input>
+			<textarea data-testid="input-field-one" type="OptionOne" placeholder="First Option" onChange={(e) => setOptionA(e.target.value)}></textarea>
 			<br></br>
             <p>Second Option</p>
-			<input data-testid="input-field-two" type="OptionTwo" placeholder="Second Option" onChange={(e) => setOptionB(e.target.value)} ></input>
+			<textarea data-testid="input-field-two" type="OptionTwo" placeholder="Second Option" onChange={(e) => setOptionB(e.target.value)} ></textarea>
 			</form>
             <br />
             <button  data-testid="button-element" onClick={handleCreatePoll} disabled={disabled}>Create Question</button>

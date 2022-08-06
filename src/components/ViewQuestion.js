@@ -49,7 +49,7 @@ const ViewQuestions = (props) => {
         const voteForOption = (option) => props.users[props.authedUser].answers[from.question.id] === option;
         
         return (
-            <div>
+            <div className = {styles.box}>
                 <div>
                     <h2>Poll by {name}</h2>
                     <img src="" alt="" />

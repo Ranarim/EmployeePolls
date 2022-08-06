@@ -1,0 +1,86 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js add jest-environment-jsdom
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.14.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/test:watch: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:66138:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:140883:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:141855:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:141777:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+      "name": "my-app",
+      "version": "0.1.0",
+      "private": true,
+      "dependencies": {
+          "@testing-library/user-event": "^13.5.0",
+          "react": "^18.1.0",
+          "react-dom": "^18.1.0",
+          "react-redux": "^8.0.1",
+          "react-redux-loading-bar": "^5.0.4",
+          "react-router-dom": "^6.3.0",
+          "react-scripts": "5.0.1",
+          "redux": "^4.2.0",
+          "redux-thunk": "^2.4.1",
+          "web-vitals": "^2.1.4"
+      },
+      "scripts": {
+          "start": "react-scripts start",
+          "build": "react-scripts build",
+          "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@toolz/allow-react)/\" --env=jsdom",
+          "eject": "react-scripts eject"
+      },
+      "eslintConfig": {
+          "extends": [
+              "react-app",
+              "react-app/jest"
+          ]
+      },
+      "browserslist": {
+          "production": [
+              ">0.2%",
+              "not dead",
+              "not op_mini all"
+          ],
+          "development": [
+              "last 1 chrome version",
+              "last 1 firefox version",
+              "last 1 safari version"
+          ]
+      },
+      "devDependencies": {
+          "@testing-library/jest-dom": "^5.16.4",
+          "@testing-library/react": "^13.3.0",
+          "babel-jest": "^28.1.0",
+          "jest": "^28.1.0",
+          "test": "jest",
+          "test:watch": "npm test -- --watch",
+          "react-test-renderer": "^18.1.0",
+          "redux-mock-store": "^1.5.4"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
