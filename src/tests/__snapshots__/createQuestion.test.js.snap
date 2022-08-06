@@ -5,7 +5,9 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
+      <div
+        class="createQuestion"
+      >
         <h2>
           Would you rather
         </h2>
@@ -16,7 +18,7 @@ Object {
           <p>
             First Option
           </p>
-          <input
+          <textarea
             data-testid="input-field-one"
             placeholder="First Option"
             type="OptionOne"
@@ -25,7 +27,7 @@ Object {
           <p>
             Second Option
           </p>
-          <input
+          <textarea
             data-testid="input-field-two"
             placeholder="Second Option"
             type="OptionTwo"
@@ -42,7 +44,9 @@ Object {
     </div>
   </body>,
   "container": <div>
-    <div>
+    <div
+      class="createQuestion"
+    >
       <h2>
         Would you rather
       </h2>
@@ -53,7 +57,7 @@ Object {
         <p>
           First Option
         </p>
-        <input
+        <textarea
           data-testid="input-field-one"
           placeholder="First Option"
           type="OptionOne"
@@ -62,7 +66,7 @@ Object {
         <p>
           Second Option
         </p>
-        <input
+        <textarea
           data-testid="input-field-two"
           placeholder="Second Option"
           type="OptionTwo"
